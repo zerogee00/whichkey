@@ -305,14 +305,35 @@ func AnalyzeDASHManifest(manifestPath string, config types.EnvironmentConfig) (*
 		anyKeyInKMS := false
 
 		for _, keyID := range keyIDList {
+			if Verbosity >= 2 {
+				fmt.Printf("🔐 Checking Vault for key: %s\n", keyID)
+			}
 			vaultInfo, vaultErr := vault.GetKeyInfoFromVault(keyID, config)
 			if vaultErr == nil {
 				anyKeyInVault = true
 				allVaultKeyInfo[keyID] = vaultInfo
+				if Verbosity >= 2 {
+					fmt.Printf("✅ Found key in Vault: %s\n", keyID)
+				}
 			} else {
+				if Verbosity >= 2 {
+					fmt.Printf("⚠️  Key not found in Vault: %v\n", vaultErr)
+					fmt.Printf("   Trying KMS service as fallback...\n")
+				}
 				kmsExists, _, kmsErr := vault.CheckKeyInKMS(keyID, config)
-				if kmsErr == nil && kmsExists {
+				if kmsErr != nil {
+					if Verbosity >= 1 {
+						fmt.Printf("⚠️  KMS check failed for key %s: %v\n", keyID, kmsErr)
+					}
+				} else if kmsExists {
 					anyKeyInKMS = true
+					if Verbosity >= 2 {
+						fmt.Printf("✅ Found key in KMS service: %s\n", keyID)
+					}
+				} else {
+					if Verbosity >= 1 {
+						fmt.Printf("⚠️  Key not found in KMS service: %s\n", keyID)
+					}
 				}
 			}
 		}

@@ -8,6 +8,7 @@
       "configmap_name": "configmap.service-media-center-utility-clip-ids",
       "secret_name": "secret.service-media-center",
       "kms_endpoint": "https://service-video-kms-use1-1.nonprd.pluto.tv/v1",
+      "kms_token": "f58afcc7-b9ae-4b15-87b1-b8030a36f0a9",
       "vault_path": "app/common/shared-encryption/nonprd",
       "vault_server": "https://vault-nonprd.devops.pluto.tv",
       "vault_key": "STATIC_ENCRYPTION_KEYS"

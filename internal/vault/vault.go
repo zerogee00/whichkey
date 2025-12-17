@@ -56,15 +56,21 @@ func GetEnvironmentConfig(env string) types.EnvironmentConfig {
 		ConfigMapName: envConfig.ConfigMapName,
 		SecretName:    envConfig.SecretName,
 		KMSEndpoint:   envConfig.KMSEndpoint,
-		KMSToken:      "", // Will be fetched from secret
+		KMSToken:      envConfig.KMSToken, // Use token from config if available
 		VaultPath:     envConfig.VaultPath,
 		VaultServer:   envConfig.VaultServer,
 		VaultKey:      vaultKey,
 	}
 }
 
-// GetKMSTokenFromSecret fetches the KMS token from the Kubernetes secret
+// GetKMSTokenFromSecret fetches the KMS token from config or Kubernetes secret
 func GetKMSTokenFromSecret(envConfig types.EnvironmentConfig) (string, error) {
+	// If token is already in config, use it
+	if envConfig.KMSToken != "" {
+		return envConfig.KMSToken, nil
+	}
+
+	// Otherwise, try to get it from Kubernetes secret
 	cmd := exec.Command("kubectl", "get", "secret", envConfig.SecretName, "-n", envConfig.Namespace, "-o", "jsonpath={.data.KMS_TOKEN}")
 	output, err := cmd.Output()
 	if err != nil {

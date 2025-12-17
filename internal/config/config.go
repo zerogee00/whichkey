@@ -26,6 +26,7 @@ type EnvironmentConfig struct {
 	ConfigMapName string   `json:"configmap_name"`
 	SecretName    string   `json:"secret_name"`
 	KMSEndpoint   string   `json:"kms_endpoint"`
+	KMSToken      string   `json:"kms_token"`
 	VaultPath     string   `json:"vault_path"`
 	VaultServer   string   `json:"vault_server"`
 	VaultKey      string   `json:"vault_key"`
