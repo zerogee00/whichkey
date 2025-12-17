@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/roddd/whichkey/internal/config"
-	"github.com/roddd/whichkey/internal/types"
+	"github.com/zerogee00/whichkey/internal/config"
+	"github.com/zerogee00/whichkey/internal/types"
 )
 
 // Verbosity level for logging

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/roddd/whichkey/internal/types"
+	"github.com/zerogee00/whichkey/internal/types"
 )
 
 func TestVerbosityVariable(t *testing.T) {
