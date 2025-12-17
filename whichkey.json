@@ -1,0 +1,58 @@
+{
+  "default_environment": "nonprd",
+  "environments": {
+    "nonprd": {
+      "name": "nonprd",
+      "aliases": ["dev", "development", "sandbox", "sbox"],
+      "namespace": "nonprd-service-media-center",
+      "configmap_name": "configmap.service-media-center-utility-clip-ids",
+      "secret_name": "secret.service-media-center",
+      "kms_endpoint": "https://service-video-kms-use1-1.nonprd.pluto.tv/v1",
+      "vault_path": "app/common/shared-encryption/nonprd",
+      "vault_server": "https://vault-nonprd.devops.pluto.tv",
+      "vault_key": "STATIC_ENCRYPTION_KEYS"
+    },
+    "preprd": {
+      "name": "preprd",
+      "aliases": ["preprod"],
+      "namespace": "preprd-service-media-center",
+      "configmap_name": "configmap.service-media-center-utility-clip-ids",
+      "secret_name": "secret.service-media-center",
+      "kms_endpoint": "https://service-video-kms-use1-1.preprd.pluto.tv/v1",
+      "vault_path": "app/common/shared-encryption/preprd",
+      "vault_server": "https://vault-ent-preprod.devops.pluto.tv:8200",
+      "vault_key": "STATIC_ENCRYPTION_KEYS"
+    },
+    "prd": {
+      "name": "prd",
+      "aliases": ["prod", "production"],
+      "namespace": "prd-service-media-center",
+      "configmap_name": "configmap.service-media-center-utility-clip-ids",
+      "secret_name": "secret.service-media-center",
+      "kms_endpoint": "https://service-video-kms-use1-1.prd.pluto.tv/v1",
+      "vault_path": "app/common/shared-encryption/prd",
+      "vault_server": "https://vault-ent-prod.devops.pluto.tv:8200",
+      "vault_key": "STATIC_ENCRYPTION_KEYS"
+    }
+  },
+  "aws_profiles": {
+    "bucket_patterns": {
+      "slio": "main-tier4",
+      "nonprd": "nonprod-tier3",
+      "dev": "nonprod-tier3",
+      "preprd": "preprod-tier3",
+      "prd": "main-tier4"
+    },
+    "default_profile": ""
+  },
+  "kubectl_contexts": {
+    "nonprd": ["nonprd", "pluto-nonprd", "aws-nonprd"],
+    "preprd": ["preprd", "pluto-preprd", "aws-preprd"],
+    "prd": ["prd", "pluto-prd", "pluto-prod", "production", "prod", "aws-prd", "aws-prod"]
+  },
+  "fallback_utility_clip_ids": [
+    "622721e908d75d0007f44311",
+    "56244db86ffa1d5f58b77376",
+    "56c2dcd6222d7c7767c715dd"
+  ]
+}

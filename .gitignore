@@ -7,6 +7,10 @@
 *.dll
 *.so
 *.dylib
+whichkey
+
+# Build output directory
+build/
 
 # Test binary, built with `go test -c`
 *.test
