@@ -11,11 +11,11 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/roddd/whichkey/internal/aws"
-	"github.com/roddd/whichkey/internal/k8s"
-	"github.com/roddd/whichkey/internal/output"
-	"github.com/roddd/whichkey/internal/types"
-	"github.com/roddd/whichkey/internal/vault"
+	"github.com/zerogee00/whichkey/internal/aws"
+	"github.com/zerogee00/whichkey/internal/k8s"
+	"github.com/zerogee00/whichkey/internal/output"
+	"github.com/zerogee00/whichkey/internal/types"
+	"github.com/zerogee00/whichkey/internal/vault"
 )
 
 // Verbosity level for logging

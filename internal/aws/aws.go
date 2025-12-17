@@ -17,7 +17,7 @@ import (
 	awsconfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
 
-	"github.com/roddd/whichkey/internal/config"
+	"github.com/zerogee00/whichkey/internal/config"
 )
 
 // GlobalHTTPClient with connection pooling for concurrent requests

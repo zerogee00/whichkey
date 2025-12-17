@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/roddd/whichkey/internal/types"
+	"github.com/zerogee00/whichkey/internal/types"
 )
 
 // ManifestPath is the global manifest path for markdown output

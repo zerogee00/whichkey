@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	types "github.com/roddd/whichkey/internal/types"
+	types "github.com/zerogee00/whichkey/internal/types"
 	mock "github.com/stretchr/testify/mock"
 )
 

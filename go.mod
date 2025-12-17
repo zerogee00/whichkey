@@ -1,4 +1,4 @@
-module github.com/roddd/whichkey
+module github.com/zerogee00/whichkey
 
 go 1.22
 

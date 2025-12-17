@@ -5,7 +5,7 @@ import (
 	"context"
 	"io"
 
-	"github.com/roddd/whichkey/internal/types"
+	"github.com/zerogee00/whichkey/internal/types"
 )
 
 // HTTPClient defines the interface for HTTP operations

@@ -18,7 +18,7 @@ A CLI tool for analyzing DRM-protected media content. It inspects HLS and DASH m
 
 ```bash
 # Clone the repository
-git clone https://github.com/roddd/whichkey.git
+git clone https://github.com/zerogee00/whichkey.git
 cd whichkey
 
 # Build and install to ~/go/bin
@@ -30,7 +30,7 @@ make build
 
 ### Pre-built Binaries
 
-Download from the [releases page](https://github.com/roddd/whichkey/releases).
+Download from the [releases page](https://github.com/zerogee00/whichkey/releases).
 
 ## Usage
 
