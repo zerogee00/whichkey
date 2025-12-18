@@ -244,20 +244,22 @@ func AnalyzeDASHManifest(manifestPath string, config types.EnvironmentConfig) (*
 					allKeyIDs[keyID] = true
 				}
 
-				schemeURI := strings.ToLower(cp.SchemeIDURI)
-				if strings.Contains(schemeURI, "widevine") {
-					encMethod = "CENC (Common Encryption)"
-					if cp.PSSH != "" {
-						psshData = cp.PSSH
-					}
-				} else if strings.Contains(schemeURI, "playready") {
-					encMethod = "CENC (Common Encryption)"
-					if cp.Pro != "" {
-						proData = cp.Pro
-					}
-				} else if strings.Contains(schemeURI, "cenc") {
-					encMethod = "CENC (Common Encryption)"
+			schemeURI := strings.ToLower(cp.SchemeIDURI)
+			// Widevine UUID: edef8ba9-79d6-4ace-a3c8-27dcd51d21ed
+			// PlayReady UUID: 9a04f079-9840-4286-ab92-e65be0885f95
+			if strings.Contains(schemeURI, "widevine") || strings.Contains(schemeURI, "edef8ba9") {
+				encMethod = "CENC (Common Encryption)"
+				if cp.PSSH != "" {
+					psshData = cp.PSSH
 				}
+			} else if strings.Contains(schemeURI, "playready") || strings.Contains(schemeURI, "9a04f079") {
+				encMethod = "CENC (Common Encryption)"
+				if cp.Pro != "" {
+					proData = cp.Pro
+				}
+			} else if strings.Contains(schemeURI, "cenc") {
+				encMethod = "CENC (Common Encryption)"
+			}
 			}
 
 			for _, rep := range adaptSet.Representations {
