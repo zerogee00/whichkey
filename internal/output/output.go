@@ -276,7 +276,7 @@ func GenerateMarkdownSummary(uniqueKeyMap map[string]types.KeyDetail, renditions
 			sb.WriteString("| Property | Value |\n")
 			sb.WriteString("|----------|-------|\n")
 
-			location := "❌ Not found"
+			location := "❌ Not found in vault"
 			if detail.InVault {
 				location = "✅ Vault"
 			} else if detail.InKMS {
@@ -421,7 +421,7 @@ func PrintSummary(uniqueKeyMap map[string]types.KeyDetail, renditions []types.Re
 			maxWidth = len(kidLine)
 		}
 
-		location := "✗ Not found"
+		location := "✗ Not found in vault"
 		if detail.InVault {
 			location = "✓ Vault"
 		} else if detail.InKMS {
@@ -499,7 +499,7 @@ func PrintSummary(uniqueKeyMap map[string]types.KeyDetail, renditions []types.Re
 			kidLine := "KID: " + detail.KID
 			fmt.Printf("│ %-*s │\n", boxWidth-2, kidLine)
 
-			location := "✗ Not found"
+			location := "✗ Not found in vault"
 			if detail.InVault {
 				location = "✓ Vault"
 			} else if detail.InKMS {
@@ -614,7 +614,7 @@ func PrintSummary(uniqueKeyMap map[string]types.KeyDetail, renditions []types.Re
 			fmt.Printf("✓ KMS: %d/%d keys verified\n", kmsCount, len(uniqueKeyMap))
 		}
 		if missingCount > 0 {
-			fmt.Printf("✗ Missing: %d/%d keys not found\n", missingCount, len(uniqueKeyMap))
+			fmt.Printf("✗ Missing: %d/%d keys not found in vault\n", missingCount, len(uniqueKeyMap))
 		}
 	}
 
